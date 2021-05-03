@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class = 'features'>
+    {% if all_course %}
+      {% for dictionary in all_course %}
+          <div class="alert alert-warning">
+            <h3>Назва курсу: {{dictionary.name}}</h3>
+            <p><h4>Опис крусу:</h4></p>
+            <p>{{ dictionary.description}}</p>
+            <p><h5>Кількість лекцій: {{ dictionary.count}}</h5></p>
+            <p>{{ dictionary.start_course.date }} - {{ dictionary.end_course.date }} </p>
+                <hr>
+                <!-- <p><form method = "POST" action="{% url 'delete_course' dictionary.id %}">
+                    {% csrf_token %}<input type='submit'class = "btn btn-info"  value='Видалити'></p>
+                </form></hr> -->
+                    <a href="{% url 'detail_course' dictionary.id %}" class = "btn btn-success">Детальна інформація</a></p>
+                </hr>
+          </div>
+      {% endfor %}
+    {% else %}
+      <center><h1>Курси відсутні</h1></center>
+    {% endif %}
+  </div>
+{% endblock %}

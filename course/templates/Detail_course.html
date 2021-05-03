@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class = 'features'>
+          <div class="alert alert-warning">
+              <h3>Назва курсу: {{dictionary.name}}</h3>
+              <p><h4>Опис крусу:</h4></p>
+              <p>{{ dictionary.description}}</p>
+              <p><h5>Кількість лекцій: {{ dictionary.count}}</h5></p>
+              <p>{{ dictionary.start_course.date }} - {{ dictionary.end_course.date }} </p>
+              <hr></hr>
+              <!-- <a href="{% url 'update_course' dictionary.id %}" class = "btn btn-info">Редагувати</a> -->
+              <form method = "POST" action="{% url 'delete_course' dictionary.id %}">
+                  <a href="{% url 'update_course' dictionary.id %}" class = "btn btn-info">Редагувати</a>
+                  {% csrf_token %}<input type='submit' class = "btn btn-danger"  value='Видалити'>
+              </form>
+          </div>
+  </div>
+{% endblock %}

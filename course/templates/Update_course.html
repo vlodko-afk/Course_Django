@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="feature">
+    <h1> Редагування курсу </h1>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.name }}<br>
+      {{ form.description }}<br>
+      {{ form.count }}<br>
+      <i>Дата початку курсу</i>
+      {{ form.start_course}}<br>
+      <i>Дата закінчення курсу</i>
+      {{ form.end_course }}<br>
+      <!-- {% for i in form.author} -->
+      <button class="btn btn-success" type = "submit">Редагувати курс</button>
+    </form>
+  </div>
+{% endblock %}
